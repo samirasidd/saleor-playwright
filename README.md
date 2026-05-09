@@ -27,8 +27,8 @@ automation and CI/CD — targeting real bugs in a production codebase.
 
 ## Run locally
 ​```
-npm install
-npx playwright install chromium
+npm install,
+npx playwright install chromium,
 npx playwright test
 ​```
 
