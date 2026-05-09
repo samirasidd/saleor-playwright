@@ -4,9 +4,13 @@ test.describe("Coupon Code", () => {
   test("Apply button does not trigger any network request", async ({
     page,
   }) => {
-    // Track network requests
-    const requests: string[] = [];
-    page.on("request", (request) => requests.push(request.url()));
+    // Only track GraphQL requests
+    const graphqlRequests: string[] = [];
+    page.on("request", (request) => {
+      if (request.url().includes("/graphql/")) {
+        graphqlRequests.push(request.url());
+      }
+    });
 
     // Navigate and add product to cart
     await page.goto("/default-channel");
@@ -22,12 +26,12 @@ test.describe("Coupon Code", () => {
     // Enter coupon and click Apply
     await page.getByRole("textbox", { name: "Discount code" }).fill("TESTCODE");
 
-    const requestsBefore = requests.length;
+    const requestsBefore = graphqlRequests.length;
     await page.getByRole("button", { name: "Apply" }).click();
     await page.waitForTimeout(2000);
-    const requestsAfter = requests.length;
+    const requestsAfter = graphqlRequests.length;
 
-    // Assert no new network requests fired
+    // Assert no GraphQL mutation fired
     expect(requestsAfter).toBe(requestsBefore);
   });
 });

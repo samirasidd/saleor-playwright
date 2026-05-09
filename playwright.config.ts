@@ -4,7 +4,7 @@ export default defineConfig({
   testDir: "./tests",
   fullyParallel: false,
   retries: 1,
-  reporter: [["html"], ["list"]],
+  //reporter: [["html"], ["list"]],
   use: {
     baseURL: "https://demo.saleor.io",
     trace: "on-first-retry",
