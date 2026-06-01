@@ -10,7 +10,7 @@ automation and CI/CD — targeting real bugs in a production codebase.
 ## Findings
 | Bug | Severity | Status |
 |-----|----------|--------|
-| [Coupon Apply button fires no network request](https://github.com/saleor/storefront/issues/1193) | High | Open |
+| [Coupon Apply button fires no network request](https://github.com/saleor/storefront/issues/1193) | High | ✅ Fixed — PR #1199 |
 
 ## Test Coverage
 - Checkout flow (guest)
